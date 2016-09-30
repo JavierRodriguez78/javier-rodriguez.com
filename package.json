@@ -17,6 +17,10 @@
   },
   "homepage": "https://github.com/JavierRodriguez78/javier-rodriguez.com#readme",
   "dependencies": {
-    "gulp": "^3.9.1"
+    "browser-sync": "^2.16.1",
+    "gulp": "^3.9.1",
+    "gulp-connect-php": "0.0.8",
+    "gulp-sass": "^2.3.2",
+    "gulp-uglify": "^2.0.0"
   }
 }
