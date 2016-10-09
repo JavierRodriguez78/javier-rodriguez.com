@@ -3,6 +3,7 @@ var gulp = require('gulp'),
     minifyCSS = require('gulp-minify-css'),
     browserSync = require('browser-sync'),
     sass = require('gulp-sass'),
+    rename = require ('gulp-rename'),
     connect = require('gulp-connect-php');
 
 
@@ -12,6 +13,16 @@ gulp.task('mincss', function(){
   .pipe(gulp.dest('assets/css/css.min.css'))
 });
 
+gulp.task('minjs', function(){
+  gulp.src('assets/js/app.js')
+  .pipe(uglify())
+  .pipe(rename('app.min.js'))
+  .pipe(gulp.dest('assets/js/'));
+});
+
+gulp.task('js:watch', function(){
+    gulp.watch('assets/js/app.js',['minjs']);
+})
 
 gulp.task('sass', function(){
   console.log("sass");
@@ -43,4 +54,4 @@ gulp.watch(['index.html','assets/js/app.js','assets/sass/*.scss']).on('change', 
   browserSync.reload();
 })
 
-gulp.task('default',['connect-sync','sass:watch']);
+gulp.task('default',['connect-sync','sass:watch','js:watch']);
